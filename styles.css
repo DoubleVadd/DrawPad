@@ -9,7 +9,7 @@ body{
     height: 90vh;
     margin: 0 auto;
     background-color: lightgray;
-    padding: 0.2rem;
+    padding: 0.3rem;
     box-shadow: inset 0.2rem 0.2rem white, inset -0.2rem -0.2rem darkgray;
     display: flex;
     flex-direction: column;
@@ -47,17 +47,106 @@ button.top-right{
 button.top-right:active{
     color: white;
     background-color: darkgrey;
+    
 }
 
 
 .setting-container, .setting{
-    background-color: darkgrey;
-    padding: 0.2em;
+    background-color: lightgrey;
+    padding: 0.2rem;
     border: 0;
 }
 
+.setting-container{
+    box-shadow: 0rem 0.1rem darkgrey;
+    z-index: 1;
+}
+
+
 .setting:active{
     color: white;
+}
+
+
+/* Middle Section */
+.center-container{
+    display: flex;
+    background-color:lightgrey;
+    height: 80%;
+    padding: 0rem 0.5rem;
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    width: 8%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 1%;
+}
+
+.tool-container, .brush-container{
+    width: 90%;
+    height: 50%;
+    margin: 0 auto;
+    margin-top: 5%;
+    box-shadow:inset -0.1rem -0.1rem 0rem black,inset 0.1rem 0.1rem white, 0.1rem 0.1rem black;
+    display: flex;
+    flex-flow:wrap;
+    justify-content: center;
+}
+
+.tool, .brush{
+    border: none;
+    
+    box-shadow:inset -0.1rem -0.1rem 0rem black,inset 0.1rem 0.1rem white;
+    background-color: lightgray;
+    font-size: larger;
+    min-width: 50%;
+}
+
+.tool:active, .brush:active{
+    background-color: dimgray;
+
+}
+
+.brush-container{
+    box-shadow:inset 0.1rem 0.1rem 0rem darkgrey,inset -0.1rem -0.1rem white;
+    width: 80%;
+    align-content: space-around;
+}
+
+.brush{
+    box-shadow: none;
+    margin: 0 auto;
+    width: 90%;
+    height: fit-content;
+}
+
+
+
+
+.canvas-container{
+    width: 90%;
+    /* overflow: scroll; */
+    overflow: auto;
+    box-shadow: inset 0.2rem 0.2rem 0.1rem darkgray, inset -0.1rem -0.1rem white;
+    background-image: url('./images/transparent.jpg');
+    background-repeat: repeat;
+    background-size: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid darkgray;
+
+}
+
+.canvas-block{
+    background-color: white;
+    height: 20rem;
+    width: 20rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
 }
 
 
