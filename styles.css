@@ -1,11 +1,12 @@
 body{
-    background-color: black;
+    background-color: RGB(1,130,129);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
 
 }
 
 .application{
-    width: 90vw;
+    width: 70vw;
     height: 90vh;
     margin: 0 auto;
     background-color: lightgray;
@@ -13,6 +14,7 @@ body{
     box-shadow: inset 0.2rem 0.2rem white, inset -0.2rem -0.2rem darkgray;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 /* HEADER AREA BUTTONS AND SETTINGS */
@@ -88,26 +90,31 @@ button.top-right:active{
 
 .tool-container, .brush-container{
     width: 90%;
-    height: 50%;
+    height: 45%;
     margin: 0 auto;
     margin-top: 5%;
     box-shadow:inset -0.1rem -0.1rem 0rem black,inset 0.1rem 0.1rem white, 0.1rem 0.1rem black;
     display: flex;
     flex-flow:wrap;
     justify-content: center;
+    overflow: auto;
 }
 
 .tool, .brush{
     border: none;
-    
     box-shadow:inset -0.1rem -0.1rem 0rem black,inset 0.1rem 0.1rem white;
     background-color: lightgray;
     font-size: larger;
     min-width: 50%;
 }
 
+button{
+    cursor:pointer;
+}
+
 .tool:active, .brush:active{
-    background-color: dimgray;
+    background-color: white;
+    box-shadow:inset 0.1rem 0.1rem 0rem black,inset -0.1rem -0.1rem lightgray;
 
 }
 
@@ -149,17 +156,85 @@ button.top-right:active{
     box-shadow: 0.2rem 0.2rem 0.2rem black;
 }
 
+.canvas-container{
+    background-color: lightgray;
+}
+
+
+
+/* COLOUR CONTAINER SECTION */
+
+.color-container{
+    width: 100%;
+    height: 10%;
+    min-height: fit-content;
+    box-shadow: inset 0rem 0.1rem darkgrey, inset 0rem 0.2rem white ,inset 0rem -0.1rem white, inset 0rem -0.2rem darkgrey;
+    display: flex;
+    margin-right: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    gap: 1%;
+}
+
+.main-color{
+    /* background-color: red; */
+    box-shadow:inset 0.2rem 0.2rem 0rem black,inset -0.2rem -0.2rem white;
+    background-color:rgb(230, 230, 230);
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: 1rem;
+}
+
+.color-selection{
+    height: 100%;
+    width: 10%;
+    margin-left: 1%;
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.colors{
+    height: 45%;
+    box-shadow:inset 0.1rem 0.1rem 0rem black;
+    border: 1px solid lightgray;
+    background-color: white;
+    aspect-ratio: 1/1;
+}
+
+.color-1{
+    background-color: black;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    margin: 0 0;
+    z-index: 1;
+}
+.color-2{
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    margin: 0 0;
+    z-index: 0;
+}
 
 
 
 
 footer{
+    width: 100%;
+    height: 5%;
     background-color: lightgray;
 }
 
-
-.canvas-container{
-    background-color: lightgray;
-}
 
 
