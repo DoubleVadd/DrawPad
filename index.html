@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="logic.js"></script>
+    <script src="logic.js" defer></script>
     <title>DrawPad</title>
 </head>
 <body>
@@ -51,7 +51,8 @@
 
             </div>
             <div class="canvas-container">
-                <div class="canvas-block"> 
+                <div class="canvas-block" id="canvas"> 
+
                 </div>
             </div>
         </div>
@@ -77,8 +78,8 @@
 
         <footer>
             <div class="canvas-size">Current Canvas Size: </div> 
-            <input type="range" min="2" max="1000" value="100" class="size-slider" id="size">
-            <div class="canvas-size current-size">100x100</div>
+            <input type="range" min="2" max="100" value="16" class="size-slider" id="size">
+            <div class="canvas-size current-size">16x16</div>
             
         </footer>
     

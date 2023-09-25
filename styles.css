@@ -1,6 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
 body{
     background-color: RGB(1,130,129);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: "ＭＳ Ｐゴシック", Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Public Pixel', sans-serif;
     overflow: hidden;
 
 }
@@ -149,16 +152,40 @@ button{
 
 }
 
-.canvas-block{
-    background-color: white;
-    height: 20rem;
-    width: 20rem;
-    box-shadow: 0.2rem 0.2rem 0.2rem black;
-}
+
 
 .canvas-container{
     background-color: lightgray;
 }
+
+.canvas-block{
+    background-color: black;
+    height: 35rem;
+    width: 35rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    /* align-items: flex-start; */
+    
+}
+
+
+/* Main canvas pixels */
+.canvas-pixel{
+    margin: 0;
+    padding: 0;
+    gap: 0;
+
+    background-color: brown;
+}
+
+
+
+
+
+
+
 
 
 
