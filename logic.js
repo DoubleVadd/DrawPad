@@ -5,13 +5,11 @@ const color1 = document.querySelector('.color-1');
 const color2 = document.querySelector('.color-2');
 const all_color = document.querySelectorAll('.colors');
 
-const color_array = ['#000000', '#ffffff', '#000000', '#ffffff', '#808080', '#FC0000','#FCF600','#1EFC00','#00FCF5','#0058FC','#0058FC','#FC008E'];
+const color_array = ['#000000', '#ffffff', '#808080', '#FC0000','#FCF600','#1EFC00','#00FCF5','#0058FC','#FC008E', '#4F0C90'];
 
 let c = 0;
 all_color.forEach(e =>{
-    console.log(c)
     e.style.backgroundColor = color_array[c];
-    console.log(e)
     c +=1;
 })
 
@@ -21,6 +19,9 @@ color1.addEventListener('change', e =>{
     e.target.style.zIndex =1;
     color2.style.zIndex =0;
     selected_color = e.target.value;
+    color1.value = e.target.value;
+    // color1.defaultValue =  e.target.value;
+    // console.log(color1.defaultValue, 'aaaaaaaaaaaa');
 })
 color2.addEventListener('change', e =>{
     e.target.style.zIndex =1;
@@ -28,8 +29,20 @@ color2.addEventListener('change', e =>{
     selected_color = e.target.value;
 })
 
+all_color.forEach( this_color =>{
+    this_color.addEventListener('click', e => {
+        e.stopPropagation();
+        let current_color = e.target.id;
+        current_color = Number(current_color.replace('color',''));
+        color1.value = color_array[current_color-1];
+        selected_color = color1.value;
+        console.log(color1.value, 'aaa')
+    })
 
-console.log(selected_color);
+    
+}
+)
+
 
 
 // Fresh Canvas
