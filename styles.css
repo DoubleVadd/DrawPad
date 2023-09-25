@@ -173,10 +173,12 @@ button{
 
 /* Main canvas pixels */
 .canvas-pixel{
+    user-drag:none;
+    user-select: none;
     margin: 0;
     padding: 0;
     gap: 0;
-
+    cursor: crosshair;
     background-color: brown;
 }
 
