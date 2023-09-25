@@ -1,19 +1,47 @@
 const canvas_slider = document.querySelector("#size"); //Slider for canvas size
 const canvas_size = document.querySelector(".current-size"); //Description for the canvas Size
-const container = document.querySelector('.canvas-block')
+const container = document.querySelector('.canvas-block');
+const color1 = document.querySelector('.color-1');
+const color2 = document.querySelector('.color-2');
+const all_color = document.querySelectorAll('.colors');
 
+const color_array = ['#000000', '#ffffff', '#000000', '#ffffff', '#808080', '#FC0000','#FCF600','#1EFC00','#00FCF5','#0058FC','#0058FC','#FC008E'];
+
+let c = 0;
+all_color.forEach(e =>{
+    console.log(c)
+    e.style.backgroundColor = color_array[c];
+    console.log(e)
+    c +=1;
+})
+
+let selected_color = color1.value;
+
+color1.addEventListener('change', e =>{
+    e.target.style.zIndex =1;
+    color2.style.zIndex =0;
+    selected_color = e.target.value;
+})
+color2.addEventListener('change', e =>{
+    e.target.style.zIndex =1;
+    color1.style.zIndex =0;
+    selected_color = e.target.value;
+})
+
+
+console.log(selected_color);
 
 
 // Fresh Canvas
-generateCanvas(canvas_slider.value)
-drawingLogic()
+generateCanvas(canvas_slider.value);
+drawingLogic();
 
 
 canvas_slider.oninput = function () {
 
     deleteCanvas();
     generateCanvas(this.value);
-    drawingLogic()
+    drawingLogic();
 
 }
 
@@ -43,13 +71,13 @@ function drawingLogic() {
         pixel.addEventListener('mousedown', (e) => {
             e.stopPropagation();
             drawing = true;  
-            e.target.style.backgroundColor = 'black'; 
+            e.target.style.backgroundColor = selected_color; 
         });
         
         pixel.addEventListener('mouseenter', (e) => {
             e.stopPropagation();
             if(drawing == true){
-            e.target.style.backgroundColor = 'black';    
+            e.target.style.backgroundColor = selected_color;    
             }
         });
 
