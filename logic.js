@@ -8,6 +8,7 @@ const all_color = document.querySelectorAll('.colors');
 
 //randomize canvas
 let randomize_C = false;
+let endless = false;
 
 // Fresh Canvas
 generateCanvas(canvas_slider.value);
@@ -30,13 +31,25 @@ randomize_canvas.addEventListener('change', function() {
         randomize_C = true;
         deleteCanvas();
         generateCanvas(canvas_slider.value, randomize_C);
+        console.log('canvas randomized')
         drawingLogic();    
     } else{
         randomize_C = false;
     }
 })
 
-
+const endless_brush = document.querySelector('#endless');
+endless_brush.addEventListener('change', function() {
+    if (this.checked) {
+        console.log('endless start');
+        endless = true;
+        drawingLogic(endless);    
+    } else{
+        console.log('endless end');
+        endless = false;
+        drawingLogic(endless);
+    }
+})
 
 
 
@@ -106,17 +119,24 @@ function colourBrush(mode){
 
 
 
-function drawingLogic() {
+function drawingLogic(endless=false) {
 
-    console.log('drawing now')
+    console.log('drawing now');
     const canvas_pixels = document.querySelectorAll('.canvas-pixel');
 
-
     let drawing = false;
+    if(endless){
+        drawing = true;
+    }   
+    console.log(drawing);
 
     container.addEventListener('mouseleave', (e) => {
         e.stopPropagation();
-        drawing = false; 
+        if(endless == false){
+            drawing = false; 
+        }else{
+            drawing = true;
+        }
         }
     );
 
@@ -131,13 +151,16 @@ function drawingLogic() {
         pixel.addEventListener('mouseenter', (e) => {
             e.stopPropagation();
             if(drawing == true){
-            e.target.style.backgroundColor = colourBrush(mode);    
+                e.target.style.backgroundColor = colourBrush(mode);    
             }
         });
 
         pixel.addEventListener('mouseup', (e) => {
             e.stopPropagation();
-            drawing = false;  
+            drawing = false;
+            endless_brush.checked = false;
+            console.log('this is', drawing)
+             
         });
 
         // console.log(drawing);
