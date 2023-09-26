@@ -5,11 +5,43 @@ const color1 = document.querySelector('.color-1');
 const color2 = document.querySelector('.color-2');
 const all_color = document.querySelectorAll('.colors');
 
+
+//randomize canvas
+let randomize_C = false;
+
+// Fresh Canvas
+generateCanvas(canvas_slider.value);
+drawingLogic();
+
+
+// New Canvas on change size
+canvas_slider.oninput = function () {
+
+    deleteCanvas();
+    generateCanvas(this.value, randomize_C);
+    drawingLogic();
+
+}
+
+//randomize canvas
+const randomize_canvas = document.querySelector('#randomize');
+randomize_canvas.addEventListener('change', function() {
+    if (this.checked) {
+        randomize_C = true;
+        deleteCanvas();
+        generateCanvas(canvas_slider.value, randomize_C);
+        drawingLogic();    
+    } else{
+        randomize_C = false;
+    }
+})
+
+
+
+
+
+//  Colour Controls //
 const color_array = ['#000000', '#ffffff', '#808080', '#FC0000','#FCF600','#1EFC00','#00FCF5','#0058FC','#FC008E', '#4F0C90'];
-
-
-
-
 let c = 0;
 all_color.forEach(e =>{
     e.style.backgroundColor = color_array[c];
@@ -23,9 +55,8 @@ color1.addEventListener('change', e =>{
     color2.style.zIndex =0;
     selected_color = e.target.value;
     color1.value = e.target.value;
-    // color1.defaultValue =  e.target.value;
-    // console.log(color1.defaultValue, 'aaaaaaaaaaaa');
 })
+
 color2.addEventListener('change', e =>{
     e.target.style.zIndex =1;
     color1.style.zIndex =0;
@@ -39,16 +70,11 @@ all_color.forEach( this_color =>{
         current_color = Number(current_color.replace('color',''));
         color1.value = color_array[current_color-1];
         selected_color = color1.value;
-        console.log(color1.value, 'aaa')
     })
+})
 
-    
-}
-)
-
+// Default is the single colour mode, random changes colour every click
 let mode = 'default'
-
-
 const rainbow = document.querySelector('#rainbow');
 let random = false;
 rainbow.addEventListener('change', function() {
@@ -61,19 +87,6 @@ rainbow.addEventListener('change', function() {
 
 
 
-
-// Fresh Canvas
-generateCanvas(canvas_slider.value);
-drawingLogic();
-
-
-canvas_slider.oninput = function () {
-
-    deleteCanvas();
-    generateCanvas(this.value);
-    drawingLogic();
-
-}
 
 
 
@@ -95,6 +108,7 @@ function colourBrush(mode){
 
 function drawingLogic() {
 
+    console.log('drawing now')
     const canvas_pixels = document.querySelectorAll('.canvas-pixel');
 
 
@@ -135,8 +149,9 @@ function drawingLogic() {
 
 // Generates a canvas of size i*i and adds empty div blocks
 // The size of each divs is based on it being a fraction of the total canvas size
-function generateCanvas(pixel_val){
+function generateCanvas(pixel_val, randomize=false){
 
+    console.log('new canvas generated')
     // Sets teh canvas size description
     canvas_size.textContent = `${pixel_val} x ${pixel_val}`;
 
@@ -145,8 +160,11 @@ function generateCanvas(pixel_val){
     for(i ; i<(pixel_val*pixel_val) ; i++){
         const new_pixel = document.createElement('div');
         new_pixel.classList.add('canvas-pixel');
-        new_pixel.style.backgroundColor ='#' + Math.floor(Math.random()*16777215).toString(16);
+        if (randomize==true){
+            new_pixel.style.backgroundColor ='#' + Math.floor(Math.random()*16777215).toString(16);
+        }else{
         new_pixel.style.backgroundColor ='white';
+        }
 
         container.appendChild(new_pixel);
     }
