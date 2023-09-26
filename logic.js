@@ -98,6 +98,20 @@ rainbow.addEventListener('change', function() {
     }
 })
 
+// Show Grid on canvas
+const canvas_grid = document.querySelector('#showgrids');
+canvas_grid.addEventListener('change', function() {
+    const canvas_pixels = document.querySelectorAll('.canvas-pixel');
+    if (this.checked) {
+        canvas_pixels.forEach((e)=>{
+            e.style.boxShadow=`inset 0.01rem 0.01rem darkgrey`;
+    })
+    } else{
+        canvas_pixels.forEach((e)=>{
+            e.style.boxShadow=`none`;
+    })
+    }
+})
 
 
 
