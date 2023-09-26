@@ -7,6 +7,9 @@ const all_color = document.querySelectorAll('.colors');
 
 const color_array = ['#000000', '#ffffff', '#808080', '#FC0000','#FCF600','#1EFC00','#00FCF5','#0058FC','#FC008E', '#4F0C90'];
 
+
+
+
 let c = 0;
 all_color.forEach(e =>{
     e.style.backgroundColor = color_array[c];
@@ -43,6 +46,20 @@ all_color.forEach( this_color =>{
 }
 )
 
+let mode = 'default'
+
+
+const rainbow = document.querySelector('#rainbow');
+let random = false;
+rainbow.addEventListener('change', function() {
+    if (this.checked) {
+        mode = 'random'
+    } else{
+        mode = 'default'
+    }
+})
+
+
 
 
 // Fresh Canvas
@@ -60,7 +77,17 @@ canvas_slider.oninput = function () {
 
 
 
+function colourBrush(mode){
+    switch(mode){
+        case 'random':
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        case 'opacity':
+            return selected_color;
+        default:
+            return selected_color;
+    }
 
+}
 
 
 
@@ -84,13 +111,13 @@ function drawingLogic() {
         pixel.addEventListener('mousedown', (e) => {
             e.stopPropagation();
             drawing = true;  
-            e.target.style.backgroundColor = selected_color; 
+            e.target.style.backgroundColor = colourBrush(mode); 
         });
         
         pixel.addEventListener('mouseenter', (e) => {
             e.stopPropagation();
             if(drawing == true){
-            e.target.style.backgroundColor = selected_color;    
+            e.target.style.backgroundColor = colourBrush(mode);    
             }
         });
 
