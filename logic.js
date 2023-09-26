@@ -106,6 +106,7 @@ rainbow.addEventListener('change', function() {
 function colourBrush(mode){
     switch(mode){
         case 'random':
+            console.log(selected_color);
             return '#' + Math.floor(Math.random()*16777215).toString(16);
         case 'opacity':
             return selected_color;
@@ -128,7 +129,7 @@ function drawingLogic(endless=false) {
     if(endless){
         drawing = true;
     }   
-    console.log(drawing);
+    // console.log(drawing);
 
     container.addEventListener('mouseleave', (e) => {
         e.stopPropagation();
@@ -159,7 +160,6 @@ function drawingLogic(endless=false) {
             e.stopPropagation();
             drawing = false;
             endless_brush.checked = false;
-            console.log('this is', drawing)
              
         });
 
